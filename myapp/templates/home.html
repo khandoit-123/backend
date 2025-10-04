@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section>
+    <video class="w-full h-auto" autoplay loop muted>
+        <source src="{% static 'images/cooking_video.mp4' %}" type="video/mp4">
+    </video>
+    <div class="flex flex-col xl:flex-row mt-10 justify-center items-center m-5" data-aos="fade-up">
+        <h1 class="italic items-center font-bold lg:text-3xl">“Only So Many Flavors, Make Every Bite Count”</h1>
+        <div class="swiper mySwiper lg:w-1/2 w-full rounded-lg">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="relative w-full mx-auto ">
+                        <img src="{% static 'images/chairs.jpeg' %}" class="w-full rounded-lg ">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-20 bg-black/60">
+                            <p class="text-sm xl:text-xl">
+                            At Little Lemon, we are passionate about bringing people together over exceptional food and warm hospitality. 
+                            Our dishes are crafted with the freshest ingredients, blending traditional flavors with modern creativity to create a dining experience that delights every sense. 
+                            Whether you're here for a quick lunch, a family dinner, or a special celebration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="{% static 'images/chef.jpg' %}" class="w-full rounded-lg">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-20 bg-black/60">
+                        <p class="text-sm xl:text-xl">
+                            We are committed to providing attentive service in a welcoming atmosphere. At the heart of our restaurant is a love for quality, community, 
+                            and the joy of sharing a great meal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}

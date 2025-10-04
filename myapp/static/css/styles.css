@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .link_design {
+    @apply text-blue-600 hover:underline;
+  }
+}

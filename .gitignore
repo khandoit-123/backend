@@ -1,0 +1,30 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# --- Logs & Databases ---
+*.log
+*.sqlite3
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- IDE/Editor files ---
+.vscode/
+.idea/
+*.swp
+
+# --- Node.js (if using frontend with npm/yarn) ---
+node_modules/
+dist/
+build/

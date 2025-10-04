@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section>
+    <form method="get" class="flex mb-4 justify-center">
+        <select name="type" onchange="form.submit()" class="border rounded p-2 bg-yellow-400 px-20 font-bold">
+            <option value="all" {% if option == "all" %}selected{% endif %}>All</option>
+            <option value="food" {% if option == "food" %}selected{% endif %}>Food</option>
+            <option value="drink" {% if option == "drink" %}selected{% endif %}>Drinks</option>
+        </select>
+    </form>
+
+    <div class="flex flex-wrap justify-center px-20 gap-6">
+        {% for item in menu_items %}
+            <div class="border rounded-lg p-4 text-center w-60 bg-gray-400" data-aos="fade-up">
+                <img src="{{ item.image.url }}" class="w-40 h-40 object-cover mx-auto rounded-md mb-2" />
+                <h2 class="font-bold text-lg">{{ item.item_name }}</h2>
+                <p>{{ item.menu_item_description }}</p>
+                <p class="mt-2">${{ item.price }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+{% endblock %}

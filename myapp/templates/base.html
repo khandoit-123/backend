@@ -1,0 +1,85 @@
+{% load static %}
+{% with link_design="hover:underline text-l p-3 font-bold" %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Little Lemon{% endblock %}</title>
+    <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+</head>
+<body class="flex flex-col min-h-screen bg-yellow-100">
+    <nav class="p-2 flex flex-col justify-between items-center xl:flex-row">
+        <div class="flex items-center gap-5 my-2">
+            <img src="{% static 'images/logo123.png' %}" alt="Logo" class="w-10 h-15">
+            <h1 class="text-l font-bold">Little Lemon</h1>
+        </div>
+        <ul class="flex items-center justify-end gap-1">
+            <li><a href="/" class="{{ link_design }}">Home</a></li>
+            <li><a href="/menu" class="{{ link_design }}">Menu</a></li>
+            <li><a href="/order" class="{{ link_design }}">Order</a></li>
+            {% if user.is_authenticated %}
+                <li>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="{{ link_design }}">Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}" class="{{ link_design }}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div  class="flex justify-center mb-5">
+        {% if user.is_authenticated %}
+            <p class="text-3xl font-bold">Welcome {{user}}</p>
+        {% else %}
+        {% endif %}
+    </div>
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <section class="bg-yellow-400 mt-10 justify-end">
+            <div class="flex justify-center items-center gap-10 p-5">
+                <img src="{% static 'images/logo123.png' %}" alt="Logo" class="w-20 h-30">
+                <ul class="font-bold">
+                    <li>Location: 123Banana, Banana street</li>
+                    <li>Email: LittleLemon@Lemon.com</li>
+                    <li>Contact: +123 123123</li>
+                </ul>
+            </div>
+        </section>
+    </footer>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: false 
+        });
+    </script>
+</body>
+</html>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    autoplay: { delay: 3000 },
+    });
+</script>
+<script>
+  AOS.init({
+    duration: 1200, 
+    once: false, 
+  });
+</script>
+
+{% endwith %}
