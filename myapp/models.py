@@ -12,12 +12,19 @@ class Menu(models.Model):
         return self.item_name
 
 class Booking(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.ForeignKey(User,on_delete=models.CASCADE)
     reservation_date = models.DateField()
-    reservation_slot = models.SmallIntegerField()
+    reservation_slot = models.TimeField()
     amt_people = models.SmallIntegerField()
 
-class checkout(models.Model):
-    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+class Order(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    item = models.ForeignKey(Menu, on_delete=models.CASCADE)
+    table = models.SmallIntegerField()
+    quantity = models.SmallIntegerField()
+
+class Track(models.Model):
+    item = models.ForeignKey(Menu, on_delete=models.CASCADE)
+    table = models.SmallIntegerField()
+    quantity = models.SmallIntegerField()
     status = models.BooleanField(default=False)
-    paid = models.BooleanField(default=False)
